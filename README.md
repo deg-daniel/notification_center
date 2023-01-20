@@ -18,8 +18,8 @@ php -S localhost:8000 index.php
   not implemented; versioning, security
   
   /get_all/user/{user_id}/
-  	browse all of my notifications (no matter if read or unread), sorted from the newest to the oldest
-   have a specific message if I don’t have any notification yet. (No need to code an example, we will simulate this use case by playing with your mock)
+  browse all of my notifications (no matter if read or unread), sorted from the newest to the oldest
+  have a specific message if I don’t have any notification yet. (No need to code an example, we will simulate this use case by playing with your mock)
   { notifications:
    [ 
      {
@@ -37,7 +37,8 @@ php -S localhost:8000 index.php
  	know how many notifications I have in my notification center, and how many of them are unread
    { total: 5, unread: 1 }
  
-  /is_read/user/{user_id}/notif/{notif_id} * { read: True }
+  /is_read/user/{user_id}/notif/{notif_id}
+  { read: True }
  
   /set_read/user/{user_id}/notif/{notif_id}
  	Know whether a notification is read or unread, and mark it as read
