@@ -21,8 +21,7 @@ php -S localhost:8000 index.php
   browse all of my notifications (no matter if read or unread), sorted from the newest to the oldest
   have a specific message if I don’t have any notification yet. (No need to code an example, we will simulate this use case by playing with your mock)
   { notifications:
-   [ 
-     {
+   [ {
       type: 'recommendation',
       content: { title: 'Je pense', description: 'Douma'},
       validity_period :  '2022-11-22T13:12:05.000Z',
@@ -49,9 +48,9 @@ php -S localhost:8000 index.php
 
 <img width="777" alt="Capture d’écran 2023-01-20 à 13 01 50" src="https://user-images.githubusercontent.com/84505471/213690623-fb1ac7e2-3b68-47c3-9374-b6c9561a5c00.png">
 
-## Class schema (quickly)
+## Class schema
 
-![class](https://user-images.githubusercontent.com/84505471/213694467-90ee98a6-bf4d-4e8b-91bf-917008105134.jpg)
+     {<img width="976" alt="Capture d’écran 2023-01-23 à 09 47 24" src="https://user-images.githubusercontent.com/84505471/213998170-10ba505a-7993-423b-821e-4c75a9bdf8ce.png">
 
 ## Some explainations
  * this notification server must work with a website or a mobile application. I choose a JSON server that seems appropriate to me. Best pratice: https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/
