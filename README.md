@@ -54,9 +54,14 @@ php -S localhost:8000 index.php
 ![class](https://user-images.githubusercontent.com/84505471/213694467-90ee98a6-bf4d-4e8b-91bf-917008105134.jpg)
 
 ## Some explainations
- * this notification server must work with a website or a mobile application. I choose a JSON server that seems appropriate to me
+ * this notification server must work with a website or a mobile application. I choose a JSON server that seems appropriate to me. Best pratice: https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/
+ 
+ 
  * the 4 content tables extend the content of the notifications table. We could add a constraint in the database, or in the application
  * a user can have multiple notifications and a notification can have multiple users, it's an NxN relationship, with the "is_read" attribute depending on the combination of the two.
+ * if the image of the notification must be taken into account, we could add a string field in the Notification table
+ * if the 'shared content' notification must be linked to the user who shared the content, an 'id_user_who_shared' field should be added to the rel_notification_user table
+ 
  
  * I used class inheritance to share common parts of notifications
  * the routing is done with regex, but we could use a more complete solution with a framework and attributes
