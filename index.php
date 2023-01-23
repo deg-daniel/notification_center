@@ -2,40 +2,7 @@
 require_once 'DB.php';
 
 
-/**
- * Json server, API syntax
- * not implemented; version, security
- * 
- * /get_all/user/{user_id}/
- * 	browse all of my notifications (no matter if read or unread), sorted from the newest to the oldest
- *  have a specific message if I don’t have any notification yet. (No need to code an example, we will simulate this use case by playing with your mock)
- * { notifications:
- *  [ 
- *    {
- *     type: 'recommendation',
- *     content: { title: 'Je pense', description: 'Douma'},
- *     validity_period :  '2022-11-22T13:12:05.000Z',
- *     description: 'coucou'
- *    },
- *    { ...}
- *  ],
- *  message: 'present only if notifications is an empty array'
- * }
-  
- * /get_count/user/{user_id}
- *	know how many notifications I have in my notification center, and how many of them are unread
- *  { total: 5, unread: 1 }
- *
- * /is_read/user/{user_id}/notif/{notif_id}
- * { read: True }
- * 
- * /set_read/user/{user_id}/notif/{notif_id}
- *	Know whether a notification is read or unread, and mark it as read
- * { is_done: True }
- */
-
-
- // TODO mettre les classes dans des fichiers séparés
+// TODO I leave the classes here for better review, but the good design pattern is often one class per file
 class Notification {
     protected $id=1;
     protected $description = "dummy";
@@ -79,6 +46,19 @@ class Album extends Notification {
     }
 }
 
+class NotificationFactory() {
+    public function createFromDB($row) {
+       switch ($row['type']) {
+          case 'album':
+              // to create an album, we can only give the ID parameter, but that will require another sql query
+              $notif = new Album($row['name']);
+
+          // etc.
+       }
+      return $notif;
+    }
+}
+
 // I use a service class to manage actions on "Notification" type objects
 class NotificationService {
     protected int $user_id;
@@ -108,15 +88,9 @@ class NotificationService {
         $statement = DB::getInstance()->query($query);
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
         $notifications = [];
+        $factory = NotificationFactory();  
         foreach($rows as $row) {
-            switch ($row['type']) {
-                case 'album':
-                    // to create an album, we can only give the ID parameter, but that will require another sql query
-                    $notif = new Album($row['name']);
-                
-                // etc.
-            }
-            
+            $notif = $factory->createFromDB($row);    
             $notifications[] = $notif;
         }
         
