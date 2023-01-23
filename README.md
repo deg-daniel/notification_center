@@ -50,7 +50,8 @@ php -S localhost:8000 index.php
 
 ## Class schema
 
-     <img width="976" alt="Capture d’écran 2023-01-23 à 09 47 24" src="https://user-images.githubusercontent.com/84505471/213998170-10ba505a-7993-423b-821e-4c75a9bdf8ce.png">
+<img width="976" alt="Capture d’écran 2023-01-23 à 09 47 24" src="https://user-images.githubusercontent.com/84505471/213998491-4b18299c-a375-41df-995b-1382db33f3c0.png">
+
 
 ## Some explainations
  * this notification server must work with a website or a mobile application. I choose a JSON server that seems appropriate to me. Best pratice: https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/
